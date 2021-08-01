@@ -132,6 +132,9 @@
     <ClInclude Include="src\anim\rnd\res\fonts.h">
       <Filter>Source Files\Animation\Render system\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="src\anim\rnd\res\sound.h">
+      <Filter>Source Files\Animation\Render system\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -156,6 +159,9 @@
       <Filter>Source Files\Animation\Render system</Filter>
     </ClCompile>
     <ClCompile Include="src\anim\rnd\res\primitives.cpp">
+      <Filter>Source Files\Animation\Render system\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\anim\rnd\res\fonts.cpp">
       <Filter>Source Files\Animation\Render system\Resources</Filter>
     </ClCompile>
   </ItemGroup>

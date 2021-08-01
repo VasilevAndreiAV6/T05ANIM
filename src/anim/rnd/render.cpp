@@ -19,7 +19,7 @@
 
 #include <wglew.h>
 #include <gl/wglext.h>
- 
+
 #pragma comment(lib, "opengl32")
 
 /* Debug output function.
@@ -209,6 +209,9 @@ vagl::render::render( HWND &hWnd, INT &W, INT &H ) :
   // Set default render parameters
   glClearColor(0.6, 0.6, 0.6, 1);
   shader_manager::Add("DEFAULT");
+
+  alutInit(NULL, 0);
+  alGetError();
 } // End of 'render' constructor
 
 /* Render system type destructor.

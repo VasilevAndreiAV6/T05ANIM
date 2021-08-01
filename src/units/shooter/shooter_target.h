@@ -47,6 +47,18 @@ namespace vagl
          Point = Pos;
        } /* End of 'EvalNormal' function */
 
+       /* Target reset function.
+        * ARGUMENTS: None.
+        * RETURNS: None.
+        */
+       VOID Reset( VOID )
+       {
+         IsCross = 0;
+         IsShoot = 0;
+         IsFallen = 0;
+         FallTime = 0;
+       } /* End of 'ResetTarget' function */
+
     }; /* End of 'target_coords' class */
 
     target *Targets;
@@ -116,10 +128,10 @@ namespace vagl
       if (Ani->KeysClick['R'])
       {
         for (INT i = 0; i < NumOfTargets; i++)
-          Targets[i].IsShoot = 0;
+          Targets[i].Reset();
         NumOfShooted = 0;
       }
-      #pragma region Intersection
+      #pragma region Intersection_Calculating
       for (INT i = 0; i < NumOfTargets; i++)
         if (!Targets[i].IsShoot && (Ani->KeysClick[VK_LBUTTON] || Ani->KeysClick[VK_RETURN]))
         {

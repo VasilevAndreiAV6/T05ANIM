@@ -16,12 +16,14 @@
 #include "res/prim.h"
 #include "res/materials.h"
 #include "res/textures.h"
+#include "res/fonts.h"
+#include "res/sound.h"
 #include "../timer.h"
 
 namespace vagl
 {
   // Render system type
-  class render : public shader_manager, public material_manager, public texture_manager, public primitives_manager
+  class render : public shader_manager, public material_manager, public texture_manager, public primitives_manager//, public font_manager
   {
   private:
     const HWND &hWnd;           // Window to dender descriptor

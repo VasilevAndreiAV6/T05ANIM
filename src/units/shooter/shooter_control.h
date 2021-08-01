@@ -6,6 +6,9 @@
 
 #include "../../anim/anim.h"
 
+#include "../../anim/rnd/res/sound.h"
+#include "../../anim/rnd/res/fonts.h"
+
 namespace vagl
 {
   /* My unit class */
@@ -18,10 +21,14 @@ namespace vagl
     BOOL IsAim = FALSE;
     BOOL IsShoot = FALSE;
     BOOL IsJump = FALSE;
+    sound s;
+    //font *f;
     
     /* Shooter control constructor */
     shooter_control( anim *Ani )
     {
+      //font_manager(f, "Bookman");
+      s = sound("BIN/SFX/shot.wav");
       //ShowCursor(FALSE);
       Ani->Camera.Resize(Ani->W, Ani->H);
       Prs = new vagl::primitives;
@@ -106,7 +113,7 @@ namespace vagl
       }
 
       if (Ani->KeysClick[VK_LBUTTON])
-        IsShoot = TRUE;
+        IsShoot = TRUE, s.StartPlaying();
 
       if (IsShoot)
       {
@@ -157,6 +164,15 @@ namespace vagl
           }
         }
       }
+
+      if (Ani->KeysClick['R'])
+      {
+        HandsRotate = matr::Translate(vec3(-1, -3, -1)) * matr::RotateY(180);
+        HandsPos = matr::Identity();
+        Ani->Camera = Camera();
+        Ani->Camera.Resize(Ani->W, Ani->H);
+        Ani->Camera.Move(vec3(0, Ani->Camera.Up.Y * 5, 0));
+      }
     } /* End of 'Response' function */
 
     /* Render function.
@@ -168,6 +184,7 @@ namespace vagl
     VOID Render( anim *Ani ) override
     {
       Prs->PrimsDraw(matr::Scale(vec3(0.1)) * HandsRotate * HandsPos, 1 * Prs->NumOfPrims);
+      //Ani->render::font_manager::Draw(f, const_cast<CHAR *>("CGSG FOREVER"), 100, vec3(0, 0, 0), vec4(1));
     } /* End of 'Render' function */
 
   }; /* End of 'unit_control' class */
